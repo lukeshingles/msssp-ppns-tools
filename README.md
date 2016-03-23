@@ -1,2 +1,2 @@
-# MSSSP-ddpns-tools
-Mount Stromlo Stellar Structure Program and Nucleosynthesis analysis and plotting tools
+# msssp-ddpns-tools
+Analysis and plotting tools for Mount Stromlo Stellar Structure Program and Nucleosynthesis codes
