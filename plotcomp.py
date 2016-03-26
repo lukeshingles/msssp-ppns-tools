@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 import csv
-import sys
-import math
 import struct
 import numpy as np
 import matplotlib.pyplot as plt
@@ -52,18 +50,18 @@ for (dirpath, dirnames, filenames) in walk(modelfolder + "comp/"):
     compfilelist.extend(filter(lambda fn: fn[:2]=='ns' and fn[-4:]=='.cmp' and int(fn[-11:-4]) >= nmodstart and int(fn[-11:-4]) <= nmodend, filenames))
     break
 
-for compfile in compfilelist:
-    if isBinaryFile(dirpath + compfile):
-        print "\n==>comp file (bin): '" + compfile
-        with open(dirpath + compfile, mode='rb') as file:
-            fileContent = file.read()
+for compfilename in compfilelist:
+    if isBinaryFile(dirpath + compfilename):
+        print "\n==>comp file (bin): '" + compfilename
+        with open(dirpath + compfile, mode='rb') as fcomp:
+            fileContent = fcomp.read()
             #model number is wrong for some reason
             modelNumber = struct.unpack("<H", fileContent[0:2])[0]
             numMassPoints = struct.unpack("<H", fileContent[2:4])[0]
             compNumSpecies = struct.unpack("<H", fileContent[4:6])[0]
             massPoints = struct.unpack("f" * numMassPoints, fileContent[6:6+4*numMassPoints])
             abundances = np.zeros((numMassPoints,len(speciesDisplayedNumbers)))
-            
+
             for massPointNum in range(numMassPoints):
                 for s in range(len(speciesDisplayedNumbers)):
                     #one is up flows, other is down flows
@@ -72,16 +70,16 @@ for compfile in compfilelist:
                     massnumber = speciesList[speciesDisplayedNumbers[s]][0]
                     #average up and down flows and multiply by mass number to get mass fraction
                     abundances[massPointNum][s] = (massnumber * 0.5 * (struct.unpack("<f", fileContent[abundIndex:abundIndex+4])[0] + struct.unpack("f", fileContent[abundIndex2:abundIndex2+4])[0]))
-            
+
             convindex = 6 + 4 * (numMassPoints + numMassPoints*compNumSpecies*2)
             numConvectiveBoundaries = struct.unpack("H", fileContent[convindex:convindex+2])[0]
             convectiveBoundaries = struct.unpack("f" * numConvectiveBoundaries, fileContent[convindex + 2:convindex + 2 + 4*numConvectiveBoundaries])
             convectiveBoundaries = zip(convectiveBoundaries[0::2], convectiveBoundaries[1::2])
     else:
-        print "\n==>comp file (text): " + compfile
-        with open(dirpath + compfile, 'rb') as txtFile:
+        print "\n==>comp file (text): " + compfilename
+        with open(dirpath + compfilename, 'rb') as txtFile:
             csvReader = csv.reader(txtFile, delimiter=' ', skipinitialspace=True)
-            
+
             compRaw = []
             for row in csvReader:
                 for col in row:

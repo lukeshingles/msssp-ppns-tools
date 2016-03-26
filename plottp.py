@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import math
 import sys
 #import numpy as np
 import matplotlib.pyplot as plt
@@ -18,8 +17,8 @@ for mode in range(1+5):
     for i in range(len(modellist)):
         tpdata = []
         headers = []
-        file = open('marmot_backup/evoln_code/' + modellist[i] + '/pulse.dat','rb')
-        for line in file.readlines():
+        fpulse = open('marmot_backup/evoln_code/' + modellist[i] + '/pulse.dat','rb')
+        for line in fpulse.readlines():
             row = line.split()
             if row[0].startswith("#"):
                 headers = [row[0][1:]] + row[1:] #remove leading hash character
@@ -85,7 +84,7 @@ for mode in range(1+5):
     #print yValues
     for n in range(len(modellist)):
         ax.plot(xValues[n], yValues[n], color=colorList[n % len(colorList)], marker='x', markersize=2, markeredgewidth=0,lw=1.5,linestyle=linestyleList[0*n % len(linestyleList)], label=modellist[n])
-        
+
 
     ax.legend(loc=4,handlelength=1,frameon=False,numpoints=1)
 

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import sys
 import os
 #from os import walk
 
@@ -15,7 +14,6 @@ for (dirpath, dirnames, filenames) in os.walk("./"):
 print '\n'.join(compfilelist)
 
 if raw_input("Delete these files? (y/n):")=='y':
-	for filename in compfilelist:
-		print 'deleting ' + filename
-		os.remove(filename)
-
+    for filename in compfilelist:
+        print 'deleting ' + filename
+        os.remove(filename)

@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-import csv
-import sys
-import os
-import math
 import struct
 import matplotlib.pyplot as plt
 import argparse
@@ -40,7 +36,7 @@ parser.add_argument('infiles', metavar='file', type=str, nargs='*',
 
 args = parser.parse_args()
 
-labels = ['Time (in years)',                                             
+labels = ['Time (in years)',
 'Convective Core Mass Fraction',
 'Maximum Temperature',
 'Density at Tmax',
@@ -122,9 +118,9 @@ else:
     for filename in args.infiles:
         listX.append([])
         listY.append([])
-        with open(filename, mode='rb') as file:
+        with open(filename, mode='rb') as fev:
             print 'Processing ' + filename + "..."
-            fileContent = file.read()
+            fileContent = fev.read()
             print 'Starting Mass: ',struct.unpack("d", fileContent[4:12])[0]
 
             #b is the byte number
@@ -179,4 +175,3 @@ else:
 
     fig.savefig('plotev.pdf',format='pdf')
     plt.close()
-

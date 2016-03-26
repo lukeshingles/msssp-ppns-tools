@@ -4,7 +4,7 @@ import sys
 import math
 import struct
 import argparse
-from collections import deque
+#from collections import deque
 
 def isBinaryFile (filename):
     fin = open(filename, 'rb')
@@ -64,14 +64,14 @@ speciesDisplayedNumbers = map(lambda z: speciesList.index(z), filter(lambda z: z
 if isBinaryFile(args.compfile):
     if not args.noheader:
         print "# comp file: '" + args.compfile + "' (binary)"
-    with open(args.compfile, mode='rb') as file:
-        fileContent = file.read()
+    with open(args.compfile, mode='rb') as compfile:
+        fileContent = compfile.read()
         modelNumber = struct.unpack("H", fileContent[0:2])[0]
         numMassPoints = struct.unpack("H", fileContent[2:4])[0]
         compNumSpecies = struct.unpack("H", fileContent[4:6])[0]
         massPoints = struct.unpack("f" * numMassPoints, fileContent[6:6+4*numMassPoints])
         abundances = [] * numMassPoints
-        
+
         for massPointNum in range(numMassPoints):
             abundances.append([])
             for speciesNum in speciesDisplayedNumbers:
@@ -80,7 +80,7 @@ if isBinaryFile(args.compfile):
                 abundIndex2 = 6 + 4 * (numMassPoints + compNumSpecies * (numMassPoints + massPointNum) + speciesNum)
                 #average up and down flows
                 abundances[-1].append(0.5 * (struct.unpack("f", fileContent[abundIndex:abundIndex+4])[0] + struct.unpack("f", fileContent[abundIndex2:abundIndex2+4])[0]))
-        
+
         convindex = 6 + 4 * (numMassPoints + numMassPoints*compNumSpecies*2)
         numConvectiveBoundaries = struct.unpack("H", fileContent[convindex:convindex+2])[0]
         convectiveBoundaries = struct.unpack("f" * numConvectiveBoundaries, fileContent[convindex + 2:convindex + 2 + 4*numConvectiveBoundaries])
@@ -89,7 +89,7 @@ else:
         print "# comp file: '" + args.compfile + "' (text)"
     with open(args.compfile, 'rb') as txtFile:
         csvReader = csv.reader(txtFile, delimiter=' ', skipinitialspace=True)
-        
+
         compRaw = []
         for row in csvReader:
             for col in row:
@@ -100,7 +100,7 @@ else:
     compNumSpecies = int(compRaw[2])
     massPoints = map(float, compRaw[3:3+int(compRaw[1])])
     abundances = [] * numMassPoints
-    
+
     for massPointNum in range(numMassPoints):
         abundances.append([])
         for speciesNum in speciesDisplayedNumbers:

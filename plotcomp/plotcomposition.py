@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
+#from matplotlib.lines import Line2D
 from matplotlib.patches import PathPatch
 import csv
-import sys
-import itertools
+#import sys
+#import itertools
 import argparse
 
 parser = argparse.ArgumentParser(description='Plot model composition csv file output by getmodelabundances.py.')
@@ -27,7 +27,7 @@ csvReader = csv.reader(open(args.compfile,'rb'), delimiter=',', skipinitialspace
 for row in csvReader:
     if not row[0].startswith("#"):
         massArray.append(float(row[0]))
-        
+
         for i in range(0,len(row)-1):
             newAbund = 10 ** float(row[i+1])
             if i == len(abundArray):
@@ -48,7 +48,7 @@ for i in range(0,len(convectiveBoundaries),2):
     #    ax.add_patch(p1)
         #p1.set_zorder(p.get_zorder())
     #    p1.set_zorder(-1)
-    
+
 for i in range(len(abundArray)):
     lineDashes = [(),(9,2),(),(9,2),(4,2),(2,2)][(i)%6]
     lineColor = [(1.0,0.0,0.0),(1.0,0.0,0.0),'0','0','0','0'][(i)%6]

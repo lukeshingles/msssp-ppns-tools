@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
+#from matplotlib.lines import Line2D
 import csv
-import sys
-import itertools
 import argparse
 
 parser = argparse.ArgumentParser(description='Plot model composition csv file output by getmodelabundances.py.')
@@ -22,7 +20,7 @@ csvReader = csv.reader(open(args.compfile,'rb'), delimiter=',', skipinitialspace
 for row in csvReader:
     if not row[0].startswith("#"):
         massArray.append(float(row[0]))
-        
+
         for i in range(0,len(row)-1):
             newAbund = 10 ** float(row[i+1])
             if i == len(abundArray):
