@@ -120,7 +120,7 @@ for compfilename in compfilelist:
     print "# model number:", modelNumber
     print "# number of mass points:", numMassPoints
     print "# comp file species count:", compNumSpecies
-    print "# convective boundaries: [" + "][".join(['%.5f, %.5f' % (cvz[0],cvz[1]) for cvz in convectiveBoundaries]) + "]"
+    print "# convective boundaries: [" + "][".join(['{0:.5f}, {1:.5f}'.format(cvz[0], cvz[1]) for cvz in convectiveBoundaries]) + "]"
     #print "# values are mass fraction"
     #print ",".join(["#mass"]+map(lambda x:speciesList[x][2],speciesDisplayedNumbers))
 

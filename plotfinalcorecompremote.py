@@ -79,12 +79,12 @@ for mass in ['3','4','5','6']:
                 for species in specieslist:
                     abundances[species] = []
 
-        print('/'.join(bobfilename.split('/')[-2:]) + ': last NMOD=%7d, Mtot=%.3f, Mcore=%.3f' % (modelnumber, mtot, mcore[m]))
+        print('/'.join(bobfilename.split('/')[-2:]) + ': last NMOD={0:7d}, Mtot={1:.3f}, Mcore={2:.3f}'.format(modelnumber, mtot, mcore[m]))
         #print massgrid
         for (species,color,dashes) in zip(specieslist,abundancecolorlist,abundancedasheslist):
             ax.plot(massgrid, abundances[species], label=species, color=color, dashes=dashes, lw=2, marker='None', markersize=8, markeredgewidth=0)
-	print('Central C/N=%.3f' % (abundances['C'][-1]/abundances['N'][-1] * 14.0/12.0))
-        print('Central C/O=%.3f' % (abundances['C'][-1]/abundances['O'][-1] * 16.0/12.0))
+	print('Central C/N={0:.3f}'.format((abundances['C'][-1]/abundances['N'][-1] * 14.0/12.0)))
+        print('Central C/O={0:.3f}'.format((abundances['C'][-1]/abundances['O'][-1] * 16.0/12.0)))
 	print(' ')
         ax.set_xlim(xmax=max(mcore)*1.05)
         modellabel = modellist[m][1:].split('z')[0] + ' M$_\odot$, Y=0.' + modellist[m][-2:]

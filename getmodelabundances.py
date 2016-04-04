@@ -112,12 +112,12 @@ if not args.noheader:
     print "# model number:", modelNumber
     print "# number of mass points:", numMassPoints
     print "# comp file species count:", compNumSpecies
-    print "# convective boundaries: " + ",".join(map(lambda x:'%.5f' % x,convectiveBoundaries))
+    print "# convective boundaries: " + ",".join(map(lambda x:'{0:.5f}'.format(x),convectiveBoundaries))
     print "# values are log10(Y)"
     print formatRow(["#mass"]+map(lambda x:speciesList[x][2],speciesDisplayedNumbers))
 
 for massPointNum in range(numMassPoints):
     if args.mass == None or massPoints[massPointNum] >= float(args.mass):
-        print formatRow(["%.5f" % massPoints[massPointNum]] + map(lambda z: ("-inf" if z <= 0 else '%.3f' % math.log10(z)),abundances[massPointNum]))
+        print formatRow(["{0:.5f}".format(massPoints[massPointNum])] + map(lambda z: ("-inf" if z <= 0 else '{0:.3f}'.format(math.log10(z))),abundances[massPointNum]))
         if args.mass != None:
             break

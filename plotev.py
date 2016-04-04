@@ -6,7 +6,7 @@ import argparse
 def evcode(string):
     value = int(string)
     if value < 1 or value > 64:
-        msg = "%r is not between 1 and 64." % string
+        msg = "{0!r} is not between 1 and 64.".format(string)
         raise argparse.ArgumentTypeError(msg)
     return value
 
