@@ -70,15 +70,15 @@ stdevInterpulsePeriod = math.sqrt(reduce(lambda x, y: x + y, map(lambda z: (z-av
 
 avgIscvnTime = reduce(lambda x, y: x + y, ListIscvnTime) / len(ListIscvnTime)
 stdevIscvnTime = math.sqrt(reduce(lambda x, y: x + y, map(lambda z: (z-avgIscvnTime)**2, ListIscvnTime)) / len(ListIscvnTime))
-print "Pulses with Tbce>50 MK: %d" % HBBpulsecount + " out of %d" % pulseCount
-print "Mcore at 1st TP: %.3f" % float(tpdata[1]['Mcore'])
-print "Total mass dredged up: %.5e" % totalMDU
-print "Max lambda: %.2f" % MaxLambda
-print "Max THeshell: %.2e" % MaxTHeShell
-print "Max THshell: %.2e" % MaxTHShell
-print "Max Mpdcz: %.4f" % MaxMHecsh
-print "Max Tbce: %.2e" % MaxTbce
-print "Avg interpulse period: %.2f +/- %.2f yrs" % (avgInterpulsePeriod, stdevInterpulsePeriod)
-print "Avg iscvn time: %.2f +/- %.2f yrs" % (avgIscvnTime, stdevIscvnTime)
-print "Avg Teff: %d" % (TeffSum/TeffValCount)
+print "Pulses with Tbce>50 MK: {0:d}".format(HBBpulsecount) + " out of {0:d}".format(pulseCount)
+print "Mcore at 1st TP: {0:.3f}".format(float(tpdata[1]['Mcore']))
+print "Total mass dredged up: {0:.5e}".format(totalMDU)
+print "Max lambda: {0:.2f}".format(MaxLambda)
+print "Max THeshell: {0:.2e}".format(MaxTHeShell)
+print "Max THshell: {0:.2e}".format(MaxTHShell)
+print "Max Mpdcz: {0:.4f}".format(MaxMHecsh)
+print "Max Tbce: {0:.2e}".format(MaxTbce)
+print "Avg interpulse period: {0:.2f} +/- {1:.2f} yrs".format(avgInterpulsePeriod, stdevInterpulsePeriod)
+print "Avg iscvn time: {0:.2f} +/- {1:.2f} yrs".format(avgIscvnTime, stdevIscvnTime)
+print "Avg Teff: {0:d}".format((TeffSum/TeffValCount))
 

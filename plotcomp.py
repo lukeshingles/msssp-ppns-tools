@@ -53,7 +53,7 @@ for (dirpath, dirnames, filenames) in walk(modelfolder + "comp/"):
 for compfilename in compfilelist:
     if isBinaryFile(dirpath + compfilename):
         print "\n==>comp file (bin): '" + compfilename
-        with open(dirpath + compfile, mode='rb') as fcomp:
+        with open(dirpath + compfilename, mode='rb') as fcomp:
             fileContent = fcomp.read()
             #model number is wrong for some reason
             modelNumber = struct.unpack("<H", fileContent[0:2])[0]
@@ -94,17 +94,18 @@ for compfilename in compfilelist:
         for massPointNum in range(numMassPoints):
             for s in range(len(speciesDisplayedNumbers)):
                 massnumber = speciesList[speciesDisplayedNumbers[s]][0]
-                abundances[massPointNum][s] = (massnumber * 0.5 * (float(compRaw[3 + numMassPoints + massPointNum*compNumSpecies + speciesDisplayedNumbers[s]]) + float(compRaw[3 + numMassPoints + (numMassPoints + massPointNum)*compNumSpecies + speciesDisplayedNumbers[s]])))
+                abundances[massPointNum][s] = (massnumber * 0.5 * (float(compRaw[3 + numMassPoints + massPointNum*compNumSpecies + speciesDisplayedNumbers[s]])
+                                               + float(compRaw[3 + numMassPoints + (numMassPoints + massPointNum)*compNumSpecies + speciesDisplayedNumbers[s]])))
         numConvectiveBoundaries = int(compRaw[3 + numMassPoints + numMassPoints*compNumSpecies*2])
         convectiveBoundaries = map(float,compRaw[3 + numMassPoints + numMassPoints*compNumSpecies*2+1:][:numConvectiveBoundaries])
         convectiveBoundaries = zip(convectiveBoundaries[0::2], convectiveBoundaries[1::2])
 
-    modelNumber = int(compfile[-11:-4]) #overwrite value from the file with number from filename
+    modelNumber = int(compfilename[-11:-4]) #overwrite value from the file with number from filename
 
     print "# model number:", modelNumber
     print "# number of mass points:", numMassPoints
     print "# comp file species count:", compNumSpecies
-    print "# convective boundaries: [" + "][".join(['%.5f, %.5f' % (cvz[0],cvz[1]) for cvz in convectiveBoundaries]) + "]"
+    print "# convective boundaries: [" + "][".join(['{0:.5f}, {1:.5f}'.format(cvz[0], cvz[1]) for cvz in convectiveBoundaries]) + "]"
     #print "# values are mass fraction"
     #print ",".join(["#mass"]+map(lambda x:speciesList[x][2],speciesDisplayedNumbers))
 
@@ -127,7 +128,7 @@ for compfilename in compfilelist:
     plt.setp(plt.getp(ax, 'yticklabels'), fontsize=fs-2)
     ax.set_ylabel('Mass fraction', labelpad=12, fontsize=fs)
     ax.set_xlabel("M / M$_\odot$", labelpad=12, fontsize=fs)
-    outfile = 'm6y35comp/pdf/' + compfile + '.pdf'
+    outfile = 'm6y35comp/pdf/' + compfilename + '.pdf'
     print "writing " + outfile
     fig.savefig(outfile,format='pdf')
     plt.close()

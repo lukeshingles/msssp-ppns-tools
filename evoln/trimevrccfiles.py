@@ -9,7 +9,7 @@ evnmodend = []
 print "file".rjust(10), "start".rjust(10), "end".rjust(10)
 
 for n in range(0,100):
-    filename = "ev%03d.dat" % n
+    filename = "ev{0:03d}.dat".format(n)
     if os.path.isfile(filename):
         modelNumbers = []
         with open(filename, mode='rb') as evfile:
@@ -27,17 +27,17 @@ for n in range(0,100):
 
 for n in range(1,len(evfilenum)):
     if evnmodstart[n] <= evnmodstart[n-1]:
-        print "WARNING: ev%03d.dat starts before ev%03d.dat!" % (evfilenum[n],evfilenum[n-1])
+        print "WARNING: ev{0:03d}.dat starts before ev{1:03d}.dat!".format(evfilenum[n], evfilenum[n-1])
     elif evnmodend[n-1] >= evnmodstart[n]:
-        print "ev%03d.dat overlaps with ev%03d.dat" % (evfilenum[n-1],evfilenum[n])
-        if os.path.isfile("ev%03dtrim.dat" % evfilenum[n-1]):
-            print "- deleting existing file ev%03dtrim.dat" % evfilenum[n-1]
-            os.system("rm ev%03dtrim.dat" % evfilenum[n-1])
-        print "- trimming ev%03d.dat to end at %d" % (evfilenum[n-1],evnmodstart[n]-1)
-        os.system("echo 'ev%03d.dat\nev%03dtrim.dat\n0\n" % (evfilenum[n-1],evfilenum[n-1]) + str(evnmodstart[n]-1) + "' | selectp > /dev/null")
+        print "ev{0:03d}.dat overlaps with ev{1:03d}.dat".format(evfilenum[n-1], evfilenum[n])
+        if os.path.isfile("ev{0:03d}trim.dat".format(evfilenum[n-1])):
+            print "- deleting existing file ev{0:03d}trim.dat".format(evfilenum[n-1])
+            os.system("rm ev{0:03d}trim.dat".format(evfilenum[n-1]))
+        print "- trimming ev{0:03d}.dat to end at {1:d}".format(evfilenum[n-1], evnmodstart[n]-1)
+        os.system("echo 'ev{0:03d}.dat\nev{1:03d}trim.dat\n0\n".format(evfilenum[n-1], evfilenum[n-1]) + str(evnmodstart[n]-1) + "' | selectp > /dev/null")
 
-        if os.path.isfile("rcc%03dtrim.dat" % evfilenum[n-1]):
-            print "- deleting existing file rcc%03dtrim.dat" % evfilenum[n-1]
-            os.system("rm rcc%03dtrim.dat" % evfilenum[n-1])
-        print "- trimming rcc%03d.dat to end at %d" % (evfilenum[n-1],evnmodstart[n]-1)
-        os.system("echo 'rcc%03d.dat\nrcc%03dtrim.dat\n0\n" % (evfilenum[n-1],evfilenum[n-1]) + str(evnmodstart[n]-1) + "' | rccselect > /dev/null")
+        if os.path.isfile("rcc{0:03d}trim.dat".format(evfilenum[n-1])):
+            print "- deleting existing file rcc{0:03d}trim.dat".format(evfilenum[n-1])
+            os.system("rm rcc{0:03d}trim.dat".format(evfilenum[n-1]))
+        print "- trimming rcc{0:03d}.dat to end at {1:d}".format(evfilenum[n-1], evnmodstart[n]-1)
+        os.system("echo 'rcc{0:03d}.dat\nrcc{1:03d}trim.dat\n0\n".format(evfilenum[n-1], evfilenum[n-1]) + str(evnmodstart[n]-1) + "' | rccselect > /dev/null")

@@ -15,10 +15,10 @@ for modeldir in modellist:
         outrow = ["!"] * len(outelements)
         for row in csvReader:
             if row[0] in outelements:
-                outrow[outelements.index(row[0])] = ("%0.3f" % float(row[2])).ljust(5)
+                outrow[outelements.index(row[0])] = ("{0:0.3f}".format(float(row[2]))).ljust(5)
             if row[0:2] == ["#","C/O"]:
-                outrow.append("%0.3f" % float(row[3][:-1])) #C/O
-                outrow.append("%0.3f" % float(row[6][:-1])) #c12/c13
+                outrow.append("{0:0.3f}".format(float(row[3][:-1]))) #C/O
+                outrow.append("{0:0.3f}".format(float(row[6][:-1]))) #c12/c13
                 #if row[0:2] == ["#","mg24/mg25"]:
                 #outrow.append("%0.3f  " % float(row[3][:-1])) #mg24/mg25
                     #outrow.append("%0.3f" % float(row[6])) #mg24/mg26
