@@ -41,7 +41,7 @@ with open(speciesfile, 'rb') as txtFile:
         speciesList[i] = (int(row[0]), row[1], row[2], int(row[3]))
 
 #convert species names to numbers
-speciesDisplayedNumbers = map(lambda z: speciesList.index(z), filter(lambda z: z[2] in speciesNamesDisplayed, speciesList))
+speciesDisplayedNumbers = map(speciesList.index, filter(lambda z: z[2] in speciesNamesDisplayed, speciesList))
 
 fig = plt.figure(figsize=(12,7))
 ax = fig.add_axes([0.10, 0.00, 0.85, 0.97])
@@ -85,7 +85,8 @@ for compfilename in compfilelist:
                     abundIndex2 = 6 + 4 * (numMassPoints + compNumSpecies * (numMassPoints + massPointNum) + speciesDisplayedNumbers[s])
                     massnumber = speciesList[speciesDisplayedNumbers[s]][0]
                     #average up and down flows and multiply by mass number to get mass fraction
-                    abundances[massPointNum][s] = (massnumber * 0.5 * (struct.unpack("<f", fileContent[abundIndex:abundIndex+4])[0] + struct.unpack("f", fileContent[abundIndex2:abundIndex2+4])[0]))
+                    abundances[massPointNum][s] = (massnumber * 0.5 * (struct.unpack("<f", fileContent[abundIndex:abundIndex+4])[0]
+                                                   + struct.unpack("f", fileContent[abundIndex2:abundIndex2+4])[0]))
 
             convindex = 6 + 4 * (numMassPoints + numMassPoints*compNumSpecies*2)
             numConvectiveBoundaries = struct.unpack("H", fileContent[convindex:convindex+2])[0]
@@ -110,7 +111,8 @@ for compfilename in compfilelist:
         for massPointNum in range(numMassPoints):
             for s in range(len(speciesDisplayedNumbers)):
                 massnumber = speciesList[speciesDisplayedNumbers[s]][0]
-                abundances[massPointNum][s] = (massnumber * 0.5 * (float(compRaw[3 + numMassPoints + massPointNum*compNumSpecies + speciesDisplayedNumbers[s]]) + float(compRaw[3 + numMassPoints + (numMassPoints + massPointNum)*compNumSpecies + speciesDisplayedNumbers[s]])))
+                abundances[massPointNum][s] = (massnumber * 0.5 * (float(compRaw[3 + numMassPoints + massPointNum*compNumSpecies + speciesDisplayedNumbers[s]])
+                                               + float(compRaw[3 + numMassPoints + (numMassPoints + massPointNum)*compNumSpecies + speciesDisplayedNumbers[s]])))
         numConvectiveBoundaries = int(compRaw[3 + numMassPoints + numMassPoints*compNumSpecies*2])
         convectiveBoundaries = map(float,compRaw[3 + numMassPoints + numMassPoints*compNumSpecies*2+1:][:numConvectiveBoundaries])
         convectiveBoundaries = zip(convectiveBoundaries[0::2], convectiveBoundaries[1::2])
@@ -208,7 +210,8 @@ startindex = -1
 for i in range(len(iscvnzonenmod)):
     if (iscvnzoneinner[i] == 0.0 and iscvnzoneouter[i] == 0.0): #or i == len(iscvnzonenmod)-1:
         if startindex != -1:
-            plt.fill_between(iscvnzonenmod[startindex:i], iscvnzoneinner[startindex:i], iscvnzoneouter[startindex:i], facecolor=(55.0/255,101.0/255,186.0/255), lw=0)
+            plt.fill_between(iscvnzonenmod[startindex:i], iscvnzoneinner[startindex:i],
+                             iscvnzoneouter[startindex:i], facecolor=(55.0/255,101.0/255,186.0/255), lw=0)
             startindex = -1
     else:
         if startindex == -1:
