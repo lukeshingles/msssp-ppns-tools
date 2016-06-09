@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 import csv
 import argparse
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import matplotlib.pyplot as plt
 #from matplotlib.lines import Line2D
-from matplotlib.patches import PathPatch
 import csv
 #import sys
 #import itertools

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import csv
-import sys
 import math
 import struct
 import argparse

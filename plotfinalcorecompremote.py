@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import math
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import glob
@@ -60,7 +59,7 @@ for mass in ['3','4','5','6']:
                         abundances['O'].append(float(line[85:95].rstrip('E')))
                     if 'Other' in specieslist:
                         abundances['Other'].append(float(line[96:103]))
-        
+
             if line.startswith('  MODEL NO'):
 		if not line[10:18].startswith('*'):
                		modelnumber = int(line[10:18])
@@ -72,7 +71,7 @@ for mass in ['3','4','5','6']:
                 else:
                     enteredselectedmodel = False
                 enteredabundancetable = False
-        
+
             if line.startswith('                                        H      HE3        HE       C           N         O      OTHER'):
                 enteredabundancetable = True
                 massgrid = []
