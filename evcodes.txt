@@ -1,64 +1,64 @@
-  1  Time (in years)                                             
-  2  Convective Core Mass Fraction                               
-  3  Maximum Temperature                                         
-  4  Density at Tmax                                             
-  5  Mass of H-exhausted Core [Msun]                                
-  6  Mass of Temperature Maximum                                 
+  1  Time (in years)
+  2  Convective Core Mass Fraction
+  3  Maximum Temperature
+  4  Density at Tmax
+  5  Mass of H-exhausted Core [Msun]
+  6  Mass of Temperature Maximum
   7  Inner Edge of Convective Envelope [Msun]
-  8  Intershell Convective Region, Outer Edge                    
-  9  Intershell Convective Region, Inner Edge                    
- 10  Mass of He-exhausted Core [Msun]                                            
- 11  Radius/Rsun                                                 
- 12  Central Density                                             
- 13  Central Temperature                                         
- 14  Central Pressure                                            
- 15  Luminosity [L/Lsun]                                         
- 16  H Burning Luminosity                                                  
- 17  He Burning Luminosity                                       
- 18  C Burning Luminosity                                        
- 19  Gravitational Luminosity                                    
- 20  Neutrino Luminosity                                         
- 21  Log10( Effective temperature [K] )                          
- 22  Central He4                                                 
- 23  Central C12                                                 
- 24  He4 at Tmax                                                 
- 25  C12 at Tmax                                                 
- 26  Central O16                                                 
- 27  Mass at Bottom of H Shell                                   
- 28  Bottom H Shell Radius/Rsun                                  
- 29  Bottom H Shell Temperature                                  
- 30  Bottom H Shell Density                                      
- 31  Middle H Shell Radius/Rsun                                  
- 32  Middle H Shell Temperature                                  
- 33  Middle H Shell Density                                      
- 34  Mass at Top of H Shell                                      
- 35  Top H Shell Radius/Rsun                                     
- 36  Top H Shell Temperature                                     
- 37  Top H Shell Density                                         
- 38  Mass at Bottom of He Shell                                 
- 39  Bottom He Shell Radius/Rsun                                 
- 40  Bottom He Shell Temperature                                 
- 41  Bottom He Shell Density                                     
- 42  Middle He Shell Radius/Rsun                                 
- 43  Helium Shell Temperature [K]                                
- 44  Middle He Shell Density                                     
- 45  Mass at Top of He Shell                                     
- 46  Top He Shell Radius/Rsun                                    
- 47  Top He Shell Temperature                                    
- 48  Top He Shell Density                                        
- 49  T at Base of Intershell Zone                                
- 50  Rho at Base of Intershell Zone                              
- 51  Intershell Convective Region: Centre                        
- 52  T at Centre of Intershell Zone                              
- 53  Rho at Centre of Intershell Zone                            
- 54  T at Top of Intershell Zone                                 
- 55  Rho at Top of Intershell Zone                               
- 56  Max Eps(H)                                                  
- 57  T at Max Eps(H)                                             
- 58  Rho at Max Eps(H)                                           
- 59  T Base of Convective Envelope [K]                           
- 60  Total Mass/Msun                                             
- 61  Mdot                                                        
- 62  Period [days]                                               
- 63  Vexp                                                        
- 64  Mbol  
+  8  Intershell Convective Region, Outer Edge
+  9  Intershell Convective Region, Inner Edge
+ 10  Mass of He-exhausted Core [Msun]
+ 11  Radius/Rsun
+ 12  Central Density
+ 13  Central Temperature
+ 14  Central Pressure
+ 15  Luminosity [L/Lsun]
+ 16  H Burning Luminosity
+ 17  He Burning Luminosity
+ 18  C Burning Luminosity
+ 19  Gravitational Luminosity
+ 20  Neutrino Luminosity
+ 21  Log10( Effective temperature [K] )
+ 22  Central He4
+ 23  Central C12
+ 24  He4 at Tmax
+ 25  C12 at Tmax
+ 26  Central O16
+ 27  Mass at Bottom of H Shell
+ 28  Bottom H Shell Radius/Rsun
+ 29  Bottom H Shell Temperature
+ 30  Bottom H Shell Density
+ 31  Middle H Shell Radius/Rsun
+ 32  Middle H Shell Temperature
+ 33  Middle H Shell Density
+ 34  Mass at Top of H Shell
+ 35  Top H Shell Radius/Rsun
+ 36  Top H Shell Temperature
+ 37  Top H Shell Density
+ 38  Mass at Bottom of He Shell
+ 39  Bottom He Shell Radius/Rsun
+ 40  Bottom He Shell Temperature
+ 41  Bottom He Shell Density
+ 42  Middle He Shell Radius/Rsun
+ 43  Helium Shell Temperature [K]
+ 44  Middle He Shell Density
+ 45  Mass at Top of He Shell
+ 46  Top He Shell Radius/Rsun
+ 47  Top He Shell Temperature
+ 48  Top He Shell Density
+ 49  T at Base of Intershell Zone
+ 50  Rho at Base of Intershell Zone
+ 51  Intershell Convective Region: Centre
+ 52  T at Centre of Intershell Zone
+ 53  Rho at Centre of Intershell Zone
+ 54  T at Top of Intershell Zone
+ 55  Rho at Top of Intershell Zone
+ 56  Max Eps(H)
+ 57  T at Max Eps(H)
+ 58  Rho at Max Eps(H)
+ 59  T Base of Convective Envelope [K]
+ 60  Total Mass/Msun
+ 61  Mdot
+ 62  Period [days]
+ 63  Vexp
+ 64  Mbol

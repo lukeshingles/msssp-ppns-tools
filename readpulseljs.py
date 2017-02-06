@@ -40,7 +40,7 @@ for pulse in tpdata[1:]:
     if float(pulse['Teff']) != 99999:
         TeffSum += float(pulse['Teff'])
         TeffValCount += 1
-    
+
     if float(pulse['THeshell']) > MaxTHeShell:
         MaxTHeShell = float(pulse['THeshell'])
 
@@ -60,7 +60,7 @@ for pulse in tpdata[1:]:
         ListIscvnTime.append(float(pulse['t_csh']))
     if float(pulse['interpulse']) != 0.:
         ListInterpulsePeriod.append(float(pulse['interpulse']))
- 
+
     totalMDU += float(pulse['Ddredge'])
     if float(pulse['Tbce']) > 5e7:
          HBBpulsecount += 1
