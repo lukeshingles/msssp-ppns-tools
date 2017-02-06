@@ -26,8 +26,8 @@ for mass in ['3', '4', '5', '6']:
         print(modellist[0], bobfilelist)
         if len(bobfilelist) > 0:
             bobfilename = bobfilelist[-1]
-    else:
-        continue
+        else:
+            continue
         mtot = -1
         abundances = {}
         bobfile = open(bobfilename, 'r')
