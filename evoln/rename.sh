@@ -11,15 +11,15 @@ then
       done
       if [ -f "seq$NUM.dat" ]
       then
-	echo "seq$NUM.dat found, skipping."
+        echo "seq$NUM.dat found, skipping."
       else
-	mv -v bob.xxx  bob$NUM.dat
-	mv -v ev.xxx   ev$NUM.dat
-	mv -v last.xxx last$NUM.dat
-	mv -v log.xxx  log$NUM.dat
-	mv -v rcc.xxx  rcc$NUM.dat
-	mv -v seq.xxx  seq$NUM.dat
-	break
+        mv -v bob.xxx  bob$NUM.dat
+        mv -v ev.xxx   ev$NUM.dat
+        mv -v last.xxx last$NUM.dat
+        mv -v log.xxx  log$NUM.dat
+        mv -v rcc.xxx  rcc$NUM.dat
+        mv -v seq.xxx  seq$NUM.dat
+        break
       fi
     done
 else
